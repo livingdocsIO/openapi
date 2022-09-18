@@ -1,0 +1,555 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "description": "This is to quickly test the Livingdocs Public API. First create a project on [Livingdocs](edit.livingdocs.io). Then create a API token for that project. Use the token to authorize your requests. You can find out more about Livingdocs [http://livingdocs.io](http://livingdocs.io). ",
+    "version": "1.0.0",
+    "title": "Livingdocs Service",
+    "termsOfService": "http://livingdocs.io/terms/",
+    "contact": {
+      "email": "team@livingdocs.io"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags": [
+    {
+      "name": "Project",
+      "description": "Project",
+      "externalDocs": {
+        "description": "Docs",
+        "url": "docs.livingdocs.io/reference-docs/public-api/project/"
+      }
+    },
+    {
+      "name": "Composition API",
+      "description": "",
+      "externalDocs": {
+        "description": "Docs",
+        "url": "docs.livingdocs.io/reference-docs/public-api/composition-api/"
+      }
+    },
+    {
+      "name": "Publications",
+      "description": "Publications",
+      "externalDocs": {
+        "description": "Docs",
+        "url": "docs.livingdocs.io/reference-docs/public-api/publications/"
+      }
+    },
+    {
+      "name": "Search",
+      "description": "Search",
+      "externalDocs": {
+        "description": "Docs",
+        "url": "docs.livingdocs.io/reference-docs/public-api/search/"
+      }
+    },
+    {
+      "name": "Document Lists",
+      "description": "",
+      "externalDocs": {
+        "description": "Docs",
+        "url": "docs.livingdocs.io/reference-docs/public-api/document-lists/"
+      }
+    },
+    {
+      "name": "Document Categories",
+      "description": "",
+      "externalDocs": {
+        "description": "Docs",
+        "url": "docs.livingdocs.io/reference-docs/public-api/document-categories/"
+      }
+    },
+    {
+      "name": "Routing",
+      "description": "Routing",
+      "externalDocs": {
+        "description": "Docs",
+        "url": "docs.livingdocs.io/reference-docs/public-api/routing/"
+      }
+    },
+    {
+      "name": "Media Library",
+      "description": "Media Library",
+      "externalDocs": {
+        "description": "Docs",
+        "url": "docs.livingdocs.io/reference-docs/public-api/media-library/"
+      }
+    },
+    {
+      "name": "Imports",
+      "description": "Imports",
+      "externalDocs": {
+        "description": "Docs",
+        "url": "docs.livingdocs.io/reference-docs/public-api/imports/"
+      }
+    },
+    {
+      "name": "Sitemaps",
+      "description": "Sitemaps",
+      "externalDocs": {
+        "description": "Docs",
+        "url": "docs.livingdocs.io/reference-docs/public-api/sitemaps/"
+      }
+    },
+    {
+      "name": "Health",
+      "description": "Check API status",
+      "externalDocs": {
+        "description": "Docs",
+        "url": "docs.livingdocs.io/reference-docs/public-api/status/"
+      }
+    },
+    {
+      "name": "Add Delivery Status",
+      "description": "",
+      "externalDocs": {
+        "description": "Docs",
+        "url": "docs.livingdocs.io/reference-docs/public-api/add-delivery-status/"
+      }
+    }
+  ],
+  "paths": {
+    "/api/v1/project": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": [
+              "public-api:read"
+            ]
+          }
+        ],
+        "tags": [
+          "Project"
+        ],
+        "summary": "details and configuration of this project.",
+        "description": "Your AccessToken is valid for a single project. This endpoint tells you the details and configuration of this project.",
+        "operationId": "getProject",
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/api/v1/channels": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": [
+              "public-api:read"
+            ]
+          }
+        ],
+        "tags": [
+          "Project"
+        ],
+        "summary": "details and configuration of this project.",
+        "operationId": "getDefaultChannel",
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/api/v1/channels/{channelHandle}": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": [
+              "public-api:read"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "channelHandle",
+            "in": "path",
+            "description": "Optional channelHandle. Will return first channel of a project if none is passed.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": ""
+            }
+          }
+        ],
+        "tags": [
+          "Project"
+        ],
+        "summary": "details and configuration of this project.",
+        "operationId": "getChannel",
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/api/v1/design": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": [
+              "public-api:read"
+            ]
+          }
+        ],
+        "tags": [
+          "Project"
+        ],
+        "summary": "details and configuration of this project.",
+        "operationId": "getDefaultDesign",
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/api/v1/design/{designVersion}": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": [
+              "public-api:read"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "designVersion",
+            "in": "path",
+            "description": "Optional design version. Will take the current design version of a channel if none is passed.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": ""
+            }
+          }
+        ],
+        "tags": [
+          "Project"
+        ],
+        "summary": "design versions of this project.",
+        "operationId": "getDesign",
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/api/v1/documents/{documentId}/addDeliveryStatus": {
+      "post": {
+        "tags": [
+          "Add Delivery Status"
+        ],
+        "summary": "details and configuration of this project.",
+        "description": "",
+        "operationId": "addDeliveryStatus",
+        "parameters": [
+          {
+            "name": "documentId",
+            "in": "path",
+            "description": "Status values that need to be considered for filter",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/api/v1/documents/latestPublications": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": [
+              "public-api:read"
+            ]
+          }
+        ],
+        "tags": [
+          "Publications"
+        ],
+        "summary": "Get Latest Publications",
+        "description": "Required scope: public-api:read. The response is a JSON object with 4 possible top-level properties: systemdata, metadata, content",
+        "operationId": "getLatestPublications",
+        "parameters": [
+          {
+            "name": "fields",
+            "description": "Filters which (comma separated) properties are included in the response. Defaults to ‘systemdata,metadata,content’ (no renditions).",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "limit",
+            "description": "A limit for how much published documents to retrieve. Defaults to 100. Max. 100.",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          },
+          {
+            "name": "renditions",
+            "description": "A comma-separated list of rendition handles. Example: ?renditions=web,json",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/api/v1/documents/{documentId}/latestPublication": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": [
+              "public-api:read"
+            ]
+          }
+        ],
+        "tags": [
+          "Publications"
+        ],
+        "summary": "Get Latest Publication",
+        "description": "Required scope: public-api:read. The response is a JSON object with 4 possible top-level properties: systemdata, metadata, content, renditions",
+        "operationId": "getLatestPublication",
+        "parameters": [
+          {
+            "name": "documentId",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "fields",
+            "description": "Filters which (comma separated) properties are included in the response. Defaults to ‘systemdata,metadata,content’ (no renditions).",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          },
+          {
+            "name": "renditions",
+            "description": "A comma-separated list of rendition handles. Example: ?renditions=web,json",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/api/v1/sitemaps/index": {
+      "get": {
+        "tags": [
+          "Sitemaps"
+        ],
+        "summary": "Get a Sitemap Index",
+        "description": "",
+        "operationId": "getSitemapIndex",
+        "parameters": [
+          {
+            "name": "baseUrl",
+            "description": "Base url of the delivery host",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": true
+          },
+          {
+            "name": "contentTypes",
+            "description": "A comma-separated list of contentTypes to include in the sitemap. Example: ?contentTypes=regular,pages",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": false
+          },
+          {
+            "name": "entriesPerPage",
+            "description": "Optional sitemap entry page size. Default 20000",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sitemap",
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/SitemapIndex"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/health": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "summary": "Check API Status",
+        "description": "",
+        "operationId": "health",
+        "responses": {
+          "200": {
+            "description": "Status ok"
+          }
+        }
+      }
+    },
+    "/api/beta/composition/{documentId}": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": [
+              "public-api:read"
+            ]
+          }
+        ],
+        "tags": [
+          "Composition API"
+        ],
+        "description": "",
+        "operationId": "compose",
+        "parameters": [
+          {
+            "name": "documentId",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "fields",
+            "description": "A list of the properties which should be computed and returned. Default: [‘systemdata’, ‘content’, ‘metadata’, ‘includes’, ‘html’, ‘design’]",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "in": "query"
+          },
+          {
+            "name": "renditions",
+            "description": "A comma-separated list of rendition handles. Example: ?renditions=web,json",
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Livingdocs",
+    "url": "http://docs.livingdocs.io"
+  },
+  "servers": [
+    {
+      "url": "https://server.livingdocs.io",
+      "description": "service"
+    },
+    {
+      "url": "http://localhost:9090/proxy/api",
+      "description": "localhost"
+    },
+    {
+      "url": "https://develop.livingdocs.io/proxy/api",
+      "description": "develop"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "Sitemap": {
+        "type": "object",
+        "properties": {
+          "loc": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://www.livingdocs.io/sitemap.2020-01.xml"
+          },
+          "lastmod": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "xml": {
+          "name": "sitemap"
+        }
+      },
+      "SitemapIndex": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Sitemap"
+        },
+        "xml": {
+          "name": "sitemapindex"
+        }
+      },
+      "ApiResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

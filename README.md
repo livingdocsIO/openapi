@@ -36,7 +36,7 @@ Alternatively you can do everything in VS Code using the [OpenAPI (Swagger) Exte
            description: ok
 ```
 ## How to contribute
-Keep the same structure as our documentation [docs](https://docs.livingdocs.io/reference-docs/public-api/)
+Keep the same structure as our documentation [docs](https://docs.livingdocs.io/reference-docs/public-api/).
 Many API endpoints are still missing. Please mark the category as completed when all its endpoints are registered in the spec.
 - Project             ✅
 - Composition API     ✅
@@ -44,7 +44,7 @@ Many API endpoints are still missing. Please mark the category as completed when
 - Search              ✅
 - Document Lists      ✅
 - Document Categories ✅
-- Media Library
+- Media Library       ✅
 - Imports
 - Sitemaps
 - Menus

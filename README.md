@@ -44,12 +44,13 @@ Many API endpoints are still missing. Please mark the category as completed when
 - Search              ✅
 - Document Lists      ✅
 - Document Categories ✅
-- Routing
 - Media Library
 - Imports
 - Sitemaps
-- Health              ✅
+- Menus
+- Routing
 - Add Delivery Status ✅
+- Health              ✅
 
 
 ## TODOs and future ideas

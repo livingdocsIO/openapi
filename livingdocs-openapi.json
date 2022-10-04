@@ -1106,71 +1106,218 @@
                     "description": "An array of documents to import. Each entry is an object.",
                     "items": {
                       "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "string",
-                          "pattern": "^[a-zA-Z0-9\\-]{1,32}$",
-                          "description": "Custom id (Allowed characters: a-z, A-Z, 0-9, and -). If omitted a random id will be generated."
-                        },
-                        "systemName": {
-                          "type": "string",
-                          "description": "A string identifiyng the external system where the asset is imported from. It is recommended that you always set this value and it is required if you provide an externalId."
-                        },
-                        "externalId": {
-                          "type": "string",
-                          "description": "Must be unique in combination with systemName."
-                        },
-                        "mediaType": {
-                          "type": "string",
-                          "description": "Currently only image is supported."
-                        },
-                        "asset": {
+                      "discriminator": {"propertyName": "mediaType"},
+                      "properties": {"mediaType": {"type": "string"}},
+                      "required": ["mediaType"],
+                      "oneOf": [
+                        {
                           "type": "object",
                           "properties": {
-                            "key": {
-                              "type": "string"
-                            },
-                            "url": {
+                            "id": {
                               "type": "string",
-                              "format": "uri",
-                              "pattern": "(http)?s?:?(\\/\\/[^\"']*\\.(?:png|jpg|jpeg|gif|png|svg|webp|mp4|mov))"
+                              "pattern": "^[a-zA-Z0-9\\-]{1,32}$",
+                              "description": "Custom id (Allowed characters: a-z, A-Z, 0-9, and -). If omitted a random id will be generated."
                             },
-                            "size": {
-                              "type": "number"
+                            "systemName": {
+                              "type": "string",
+                              "description": "A string identifiyng the external system where the asset is imported from. It is recommended that you always set this value and it is required if you provide an externalId."
                             },
-                            "width": {
-                              "type": "number"
+                            "externalId": {
+                              "type": "string",
+                              "description": "Must be unique in combination with systemName."
                             },
-                            "height": {
-                              "type": "number"
+                            "mediaType": {
+                              "type": "string",
+                              "enum": [
+                                "image"
+                              ]
                             },
-                            "filename": {
-                              "type": "string"
+                            "asset": {
+                              "type": "object",
+                              "properties": {
+                                "key": {
+                                  "type": "string"
+                                },
+                                "url": {
+                                  "type": "string",
+                                  "format": "uri",
+                                  "pattern": "(http)?s?:?(\\/\\/[^\"']*\\.(?:png|jpg|jpeg|gif|png|svg|webp|mp4|mov))"
+                                },
+                                "size": {
+                                  "type": "number"
+                                },
+                                "width": {
+                                  "type": "number"
+                                },
+                                "height": {
+                                  "type": "number"
+                                },
+                                "filename": {
+                                  "type": "string"
+                                },
+                                "mimeType": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "key",
+                                "url",
+                                "size",
+                                "width",
+                                "height",
+                                "mimeType",
+                                "filename"
+                              ]
                             },
-                            "mimeType": {
-                              "type": "string"
+                            "metadata": {
+                              "type": "object"
+                            },
+                            "translations": {
+                              "$ref": "#/components/schemas/MediaLibraryTranslations"
                             }
                           },
                           "required": [
-                            "key",
-                            "url",
-                            "size",
-                            "width",
-                            "height",
-                            "mimeType",
-                            "filename"
+                            "mediaType",
+                            "asset"
                           ]
                         },
-                        "metadata": {
-                          "type": "object"
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "pattern": "^[a-zA-Z0-9\\-]{1,32}$",
+                              "description": "Custom id (Allowed characters: a-z, A-Z, 0-9, and -). If omitted a random id will be generated."
+                            },
+                            "systemName": {
+                              "type": "string",
+                              "description": "A string identifiyng the external system where the asset is imported from. It is recommended that you always set this value and it is required if you provide an externalId."
+                            },
+                            "externalId": {
+                              "type": "string",
+                              "description": "Must be unique in combination with systemName."
+                            },
+                            "mediaType": {
+                              "type": "string",
+                              "enum": [
+                                "file"
+                              ]                            },
+                            "asset": {
+                              "type": "object",
+                              "properties": {
+                                "key": {
+                                  "type": "string"
+                                },
+                                "url": {
+                                  "type": "string",
+                                  "format": "uri",
+                                  "pattern": "(http)?s?:?(\\/\\/[^\"']*\\.*)"
+                                },
+                                "size": {
+                                  "type": "number"
+                                },
+                                "filename": {
+                                  "type": "string"
+                                },
+                                "mimeType": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "key",
+                                "url",
+                                "size",
+                                "mimeType",
+                                "filename"
+                              ]
+                            },
+                            "metadata": {
+                              "type": "object"
+                            },
+                            "translations": {
+                              "$ref": "#/components/schemas/MediaLibraryTranslations"
+                            }
+                          },
+                          "required": [
+                            "mediaType",
+                            "asset"
+                          ]
                         },
-                        "translations": {
-                          "$ref": "#/components/schemas/MediaLibraryTranslations"
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "pattern": "^[a-zA-Z0-9\\-]{1,32}$",
+                              "description": "Custom id (Allowed characters: a-z, A-Z, 0-9, and -). If omitted a random id will be generated."
+                            },
+                            "systemName": {
+                              "type": "string",
+                              "description": "A string identifiyng the external system where the asset is imported from. It is recommended that you always set this value and it is required if you provide an externalId."
+                            },
+                            "externalId": {
+                              "type": "string",
+                              "description": "Must be unique in combination with systemName."
+                            },
+                            "mediaType": {
+                              "type": "string",
+                              "enum": [
+                                "video"
+                              ]
+                            },
+                            "asset": {
+                              "type": "object",
+                              "properties": {
+                                "key": {
+                                  "type": "string"
+                                },
+                                "url": {
+                                  "type": "string",
+                                  "format": "uri",
+                                  "pattern": "(http)?s?:?(\\/\\/[^\"']*\\.*)"
+                                },
+                                "size": {
+                                  "type": "number"
+                                },
+                                "width": {
+                                  "type": "number"
+                                },
+                                "height": {
+                                  "type": "number"
+                                },
+                                "duration": {
+                                  "type": "number"
+                                },
+                                "filename": {
+                                  "type": "string"
+                                },
+                                "mimeType": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "key",
+                                "url",
+                                "size",
+                                "width",
+                                "height",
+                                "duration",
+                                "mimeType",
+                                "filename"
+                              ]
+                            },
+                            "metadata": {
+                              "type": "object"
+                            },
+                            "translations": {
+                              "$ref": "#/components/schemas/MediaLibraryTranslations"
+                            }
+                          },
+                          "required": [
+                            "mediaType",
+                            "asset"
+                          ]
                         }
-                      },
-                      "required": [
-                        "mediaType",
-                        "asset"
                       ]
                     }
                   }

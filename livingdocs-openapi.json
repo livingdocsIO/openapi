@@ -669,23 +669,26 @@
             "description": "Ids of a Media Library entries",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "gxMMLV1fc-cm,f4jH1hyijDiF"
             }
           },
           {
             "name": "externalIds",
-            "description": "External ids of a Media Library entries",
+            "description": "Must be unique in combination with systemName",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "6hedie82"
             }
           },
           {
             "name": "systemName",
-            "description": "",
+            "description": "A string identifiyng the external system where the asset is imported from. It is recommended that you always set this value and it is required if you provide an externalId.",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "externalSystem"
             }
           }
         ],

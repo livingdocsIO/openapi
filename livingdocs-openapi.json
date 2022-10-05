@@ -87,11 +87,11 @@
       }
     },
     {
-      "name": "Menu",
-      "description": "Menu",
+      "name": "Menus",
+      "description": "Menus",
       "externalDocs": {
         "description": "Docs",
-        "url": "docs.livingdocs.io/reference-docs/public-api/menu/"
+        "url": "docs.livingdocs.io/reference-docs/public-api/menus/"
       }
     },
     {
@@ -901,6 +901,164 @@
                         "type": "image",
                         "location": "metadata",
                         "propertyName": "imageLink"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/routing/resolve": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": [
+              "public-api:read"
+            ]
+          }
+        ],
+        "tags": [
+          "Routing"
+        ],
+        "summary": "Resolve a Path to a Document",
+        "description": "You need to activate the Categories / Routing Feature in the Project Config in order to resolve paths to your documents. Routing is a quite advanced topic and the examples only work with a default configuration. Find more [here](https://docs.livingdocs.io/guides/organisation/routing-system/).",
+        "parameters": [
+          {
+            "name": "path",
+            "description": "Path to the document.\n\n**Example 1:** A page with a category `/news` can be found with `?path=/news.html`.\n\n**Example 2:** A document with id 10, with category /news and a slug `hello` can be found with `?path=/magazin/hello-10.html`.",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "type": "document",
+                    "resource": {
+                      "id": 173,
+                      "statusCode": 200
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "301": {
+            "description": "Moved Permanently",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "type": "redirect",
+                    "path": "/path/to/redirect",
+                    "resource": {
+                      "statusCode": 301
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": 404,
+                  "error": "Not Found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/menus/{channelHandle}": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": [
+              "public-api:read"
+            ]
+          }
+        ],
+        "tags": [
+          "Menus"
+        ],
+        "summary": "Get Menus for a Channel",
+        "description": "Menu items can be of three `type`s:\n- uri for arbitrary URIs, mainly used for URLs\n- path for internal paths, such as when the menu item should link to an article or page\n- document is the same as path except it is used when routing is disabled",
+        "parameters": [
+          {
+            "name": "channelHandle",
+            "description": "The handle of the channel for which you want to get the events.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "web"
+            }
+          },
+          {
+            "name": "handle",
+            "description": "Handle of the menu to retrieve.",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "version": 8,
+                    "label": "My Menu",
+                    "maxDepth": 1,
+                    "nodes": [
+                      {
+                        "id": "11111111-0601-4c2b-a3b5-4da19b6d3bde",
+                        "label": "My Index",
+                        "path": "/",
+                        "type": "uri",
+                        "target": "_self",
+                        "nodes": [
+                          {
+                            "id": "22222222-0601-4c2b-a3b5-4da19b6d3bde",
+                            "documentId": 71,
+                            "label": "Other Page",
+                            "type": "path",
+                            "path": "/page/some-other-page",
+                            "nodes": []
+                          }
+                        ]
+                      },
+                      {
+                        "id": "33333333-0601-4c2b-a3b5-4da19b6d3bde",
+                        "label": "Arbitrary URL",
+                        "type": "uri",
+                        "uri": "http://example.com",
+                        "nodes": []
+                      },
+                      {
+                        "id": "44444444-0601-4c2b-a3b5-4da19b6d3bde",
+                        "label": "Other But External URL Link",
+                        "type": "uri",
+                        "uri": "http://foo.bar",
+                        "target": "_blank",
+                        "nodes": []
                       }
                     ]
                   }

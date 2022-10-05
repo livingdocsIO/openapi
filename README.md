@@ -7,7 +7,34 @@ This file makes it easy to test and share our API enpoints.
 - service (edit.livingdocs.io)
 - localhost
 
-## How to use it (for now)
+## How to use it
+The OpenAPI spec is hosted by Github pages at: 
+
+https://livingdocsio.github.io/openapi/livingdocs-openapi.json 
+
+This can be imported in Insomnia or Postman to have a full suite of API enpoints to test.
+
+TODO add insomnia screenshot
+
+Alternatively the same can be done with online tools. You just need to paste the OpenAPI spec url in one of the following tools.
+
+[Swagger UI](https://petstore.swagger.io/)
+
+[Swagger Editor](https://editor.swagger.io/)
+
+[RapidDocWeb](https://rapidocweb.com/examples/example1.html)
+
+
+### Some other tools
+
+[OpenAPI Tools](https://openapi.tools/) list of useful tools related to OpenAPI
+
+[ApiTree](https://www.apitree.com/) hosted API documentation based on OpenAPI
+
+[OpenDocumenter](https://ouropencode.github.io/OpenDocumenter/):
+for creating a documentation from OpenAPI spec
+
+## How to develop
 Import the livingdocs-openapi.json file into insomnia as a design document, here you can test the APIs and add new endpoints.
 For authenticated requests you need an API token from your Livingdocs project.
 
@@ -47,8 +74,8 @@ Many API endpoints are still missing. Please mark the category as completed when
 - Media Library       ✅
 - Imports
 - Sitemaps
-- Menus
-- Routing
+- Menus               ✅
+- Routing             ✅
 - Add Delivery Status ✅
 - Health              ✅
 

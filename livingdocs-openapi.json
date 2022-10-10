@@ -1911,10 +1911,17 @@
     },
     "/api/v1/sitemaps/index": {
       "get": {
+        "security": [
+          {
+            "bearerAuth": [
+              "public-api:read"
+            ]
+          }
+        ],
         "tags": [
           "Sitemaps"
         ],
-        "summary": "Get a Sitemap Index",
+        "summary": "Get a Sitemap's Index",
         "description": "",
         "parameters": [
           {
@@ -1928,12 +1935,12 @@
           },
           {
             "name": "contentTypes",
-            "description": "A comma-separated list of contentTypes to include in the sitemap. Example: ?contentTypes=regular,pages",
+            "description": "A comma-separated list of contentTypes to include in the sitemap. Example: `?contentTypes=regular,pages`",
             "schema": {
               "type": "string"
             },
             "in": "query",
-            "required": false
+            "example": "regular,pages"
           },
           {
             "name": "entriesPerPage",
@@ -1942,7 +1949,7 @@
               "type": "string"
             },
             "in": "query",
-            "required": false
+            "example": "20000"
           }
         ],
         "responses": {
@@ -1950,7 +1957,82 @@
             "description": "Sitemap",
             "content": {
               "application/xml": {
-                "schema": {}
+                "examples": {
+                  "xml": {
+                    "summary": "Sitemap example",
+                    "externalValue": "https://livingdocsio.github.io/openapi/examples/sitemap-index.xml"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sitemaps/entries": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": [
+              "public-api:read"
+            ]
+          }
+        ],
+        "tags": [
+          "Sitemaps"
+        ],
+        "summary": "Get a Sitemap's Entries",
+        "description": "",
+        "parameters": [
+          {
+            "name": "baseUrl",
+            "description": "Base url of the delivery host. `?baseUrl=https://livingdocs.io/`",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "https://livingdocs.io/"
+          },
+          {
+            "name": "date",
+            "description": "Date for the specific month matching the schema from the sitemap index file. Example: `?date=2021-06` or `?date=2021-06.2`",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": true
+          },
+          {
+            "name": "contentTypes",
+            "description": "A comma-separated list of contentTypes to include in the sitemap. Example: `?contentTypes=regular,pages`",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "example": "regular,pages"
+          },
+          {
+            "name": "entriesPerPage",
+            "description": "Optional sitemap entry page size. Default 20000",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "example": "20000"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sitemap",
+            "content": {
+              "application/xml": {
+                "examples": {
+                  "xml": {
+                    "summary": "Sitemap example",
+                    "externalValue": "https://livingdocsio.github.io/openapi/examples/sitemap-entries.xml"
+                  }
+                }
               }
             }
           }
@@ -2157,32 +2239,6 @@
               "$ref": "#/components/schemas/MediaLibraryEntryAsset"
             }
           }
-        }
-      },
-      "Sitemap": {
-        "type": "object",
-        "properties": {
-          "loc": {
-            "type": "string",
-            "format": "uri",
-            "example": "https://www.livingdocs.io/sitemap.2020-01.xml"
-          },
-          "lastmod": {
-            "type": "string",
-            "format": "date-time"
-          }
-        },
-        "xml": {
-          "name": "sitemap"
-        }
-      },
-      "SitemapIndex": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Sitemap"
-        },
-        "xml": {
-          "name": "sitemapindex"
         }
       },
       "ApiResponse": {

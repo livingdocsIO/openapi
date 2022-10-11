@@ -1908,6 +1908,379 @@
         }
       }
     },
+    "/api/v1/documents/{documentId}/incomingDocumentReferences": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": [
+              "public-api:read"
+            ]
+          }
+        ],
+        "tags": [
+          "Publications"
+        ],
+        "summary": "Incoming Publication References",
+        "description": "Get Incoming Publication References for a Document",
+        "parameters": [
+          {
+            "name": "documentId",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "limit",
+            "description": "A limit for how much published documents to retrieve. Defaults to 100. Max. 100.",
+            "schema": {
+              "type": "integer",
+              "example": 100
+            },
+            "in": "query"
+          },
+          {
+            "name": "offset",
+            "description": "An offset into the query. Useful when getting more than 100 results (pagination).",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "example": [
+                    {
+                      "id": 4,
+                      "references": [
+                        {
+                          "id": "1",
+                          "type": "document",
+                          "location": "include-directive",
+                          "componentId": "doc-1euiflvoq0",
+                          "serviceName": "editable-teaser",
+                          "propertyName": "article",
+                          "componentName": "teaser-include",
+                          "directiveName": "teaser"
+                        }
+                      ]
+                    },
+                    {
+                      "id": 2,
+                      "references": [
+                        {
+                          "id": "1",
+                          "type": "document",
+                          "location": "include-directive",
+                          "componentId": "doc-1eu6i7l880",
+                          "serviceName": "editable-teaser",
+                          "propertyName": "article",
+                          "componentName": "teaser-include",
+                          "directiveName": "teaser"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/documents/{documentId}/incomingMediaReferences": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": [
+              "public-api:read"
+            ]
+          }
+        ],
+        "tags": [
+          "Publications"
+        ],
+        "summary": "Incoming Media References",
+        "description": "Get Incoming Media References for a Document. Added in: [release-2022-03](https://docs.livingdocs.io/operations/releases/release-2022-03/release-2022-03/)",
+        "parameters": [
+          {
+            "name": "documentId",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "limit",
+            "description": "A limit for how much published documents to retrieve. Defaults to 100. Max. 100.",
+            "schema": {
+              "type": "integer",
+              "example": 100
+            },
+            "in": "query"
+          },
+          {
+            "name": "offset",
+            "description": "An offset into the query. Useful when getting more than 100 results (pagination).",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "example": [
+                    {
+                      "id": "98sXCahM5PEk",
+                      "references": [
+                        {
+                          "id": "3",
+                          "type": "document",
+                          "location": "metadata",
+                          "propertyName": "documentLink"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/documents/{documentId}/latestPublication/renditions/{renditionHandles}": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": [
+              "public-api:read"
+            ]
+          }
+        ],
+        "tags": [
+          "Publications"
+        ],
+        "summary": "Get Specific Renditions for a Publication",
+        "description": "**Upcoming Deprecation**\n\nPlease note that we’re working on offering a better alternative to the renditions with the `Composition API`.\n\nIf you need the HTML for a document you can use the `Composition API` and pass the field `html`.\n\n**Required Server Configuration**\n\nRenditions are only available if configured in the contentType configuration.",
+        "parameters": [
+          {
+            "name": "renditionHandles",
+            "description": "A comma-separated list of renditions handles, e.g. `web,name`.",
+            "schema": {
+              "type": "string"
+            },
+            "in": "path",
+            "required": true,
+            "example": "web,name"
+          },
+          {
+            "name": "documentId",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "example": [
+                    {
+                      "handle": "web",
+                      "content": "<div class=\"head\">\n  <h1>a title</h1>\n  <p class=\"lead\">some lead</p>\n</div>\n<figure class=\"aspect-ratio left\">\n  <img class=\"doc-image-empty\" src=\"data:image/svg+xml;charset=UTF-8,…\">\n  <figcaption>my caption</figcaption>\n</figure>\n<p>first paragraph</p>\n<p>second</p>\n<p>and third one. :)</p>"
+                    },
+                    {
+                      "handle": "mobile",
+                      "content": [
+                        {
+                          "id": "doc-1b8i1ksh10",
+                          "identifier": "timeline.head",
+                          "component": "head",
+                          "content": {
+                            "title": "a title",
+                            "text": "some lead"
+                          }
+                        },
+                        {
+                          "id": "doc-1b8i1ksh20",
+                          "identifier": "timeline.normal",
+                          "component": "normal",
+                          "content": {
+                            "caption": "my caption"
+                          },
+                          "styles": {
+                            "position": "left"
+                          }
+                        },
+                        {
+                          "id": "doc-1b8i1ksh30",
+                          "identifier": "timeline.p",
+                          "component": "p",
+                          "content": {
+                            "text": "first paragraph"
+                          }
+                        },
+                        {
+                          "id": "doc-1b8i1me1d0",
+                          "identifier": "timeline.p",
+                          "component": "p",
+                          "content": {
+                            "text": "second paragraph"
+                          }
+                        }
+                      ],
+                      "design": {
+                        "name": "timeline",
+                        "version": "1.1.0"
+                      }
+                    },
+                    {
+                      "handle": "app",
+                      "error": {
+                        "message": "Processing of Channel 'app' for document '1' failed. Detailed error message…"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/beta/documents/{documentId}/latestDraft": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": [
+              "public-api:write",
+              "public-api:drafts:read"
+            ]
+          }
+        ],
+        "tags": [
+          "Publications"
+        ],
+        "summary": "Get Latest Draft",
+        "description": "**Added in:** [release-2022-03](https://docs.livingdocs.io/operations/releases/release-2022-03/release-2022-03/)\n\n**Required scope:** `public-api:write` `public-api:drafts:read`\n\nThis endpoint returns the most recent draft version of a document. A token with permission The response is a JSON object with 5 possible top-level properties: \n- systemdata \n- metadata \n- content \n- references \n- renditions (if rendition handles are specified)",
+        "parameters": [
+          {
+            "name": "documentId",
+            "schema": {
+              "type": "integer"
+            },
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "renditions",
+            "description": "A comma-separated list of rendition handles. Example: `?renditions=web,json`",
+            "schema": {
+              "type": "string",
+              "example": "web,json"
+            },
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "example": {
+                    "systemdata": {
+                      "projectId": 1,
+                      "channelId": 1,
+                      "documentId": 603,
+                      "contentType": "regular",
+                      "documentType": "article",
+                      "firstPublicationDate": "2022-02-22T16:33:42.836Z",
+                      "updatedAt": "2022-02-22T16:33:42.836Z",
+                      "design": {
+                        "name": "living-times",
+                        "version": "1.0.4"
+                      }
+                    },
+                    "content": [
+                      {
+                        "id": "doc-1fsh4faeo0",
+                        "identifier": "living-times.article-container",
+                        "component": "article-container",
+                        "position": "fixed",
+                        "containers": {
+                          "main": [
+                            {
+                              "id": "doc-1fsh4faeo3",
+                              "identifier": "living-times.paragraph",
+                              "component": "paragraph",
+                              "content": {
+                                "text": "First paragraph published."
+                              }
+                            },
+                            {
+                              "id": "doc-1fsh4g83l0",
+                              "identifier": "living-times.paragraph",
+                              "component": "paragraph",
+                              "content": {
+                                "text": "Second paragraph unpublished."
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "references": [
+                      {
+                        "id": "KjqXSj2P1-L0",
+                        "type": "language-group",
+                        "location": "metadata",
+                        "propertyName": "language"
+                      }
+                    ],
+                    "metadata": {
+                      "language": {
+                        "label": "German",
+                        "locale": "de",
+                        "groupId": "KjqXSj2P1-L0"
+                      },
+                      "title": "Draft (Changed)"
+                    },
+                    "renditions": [
+                      {
+                        "handle": "web",
+                        "content": "<div class=\"head\">\n  <h1>a title</h1>\n  <p class=\"lead\">some lead</p>\n</div>\n<figure class=\"aspect-ratio left\">\n  <img class=\"doc-image-empty\" src=\"data:image/svg+xml;charset=UTF-8,…\">\n  <figcaption>my caption</figcaption>\n</figure>\n<p>first paragraph</p>\n<p>second</p>\n<p>and third one. :)</p>"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/import/mediaLibrary": {
       "post": {
         "security": [

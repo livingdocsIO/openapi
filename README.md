@@ -67,12 +67,12 @@ Keep the same structure as our documentation [docs](https://docs.livingdocs.io/r
 Many API endpoints are still missing. Please mark the category as completed when all its endpoints are registered in the spec.
 - Project             ✅
 - Composition API     ✅
-- Publications        
+- Publications        ✅    
 - Search              ✅
 - Document Lists      ✅
 - Document Categories ✅
 - Media Library       ✅
-- Imports
+- Imports             ✅
 - Sitemaps            ✅
 - Menus               ✅
 - Routing             ✅
@@ -81,7 +81,7 @@ Many API endpoints are still missing. Please mark the category as completed when
 
 
 ## TODOs and future ideas
-- add all the api endpoints from our docs
+- add all the api endpoints from our docs ✅
 - share the OpenAPI spec file on edit.livingdocs/api/openapi.json
 - embedd the Swagger UI in our docs
 - support to extend downstream with downstream declaration

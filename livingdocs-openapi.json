@@ -1583,7 +1583,8 @@
             "name": "reverse",
             "description": "Returns the events in reverse order, starting at the biggest id.",
             "schema": {
-              "type": "boolean"
+              "type": "boolean",
+              "example": false
             },
             "in": "query"
           },
@@ -1764,7 +1765,8 @@
             "name": "reverse",
             "description": "Returns the events in reverse order, starting at the biggest id.",
             "schema": {
-              "type": "boolean"
+              "type": "boolean",
+              "example": false
             },
             "in": "query"
           },
@@ -1944,7 +1946,8 @@
             "name": "offset",
             "description": "An offset into the query. Useful when getting more than 100 results (pagination).",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "example": 0
             },
             "in": "query"
           }
@@ -2031,7 +2034,8 @@
             "name": "offset",
             "description": "An offset into the query. Useful when getting more than 100 results (pagination).",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "example": 0
             },
             "in": "query"
           }
@@ -2369,6 +2373,15 @@
                     "description": "An array of documents to import. Each entry is an object.",
                     "items": {
                       "type": "object",
+                      "required": [
+                        "id",
+                        "checksum",
+                        "title",
+                        "contentType",
+                        "publicationDate",
+                        "livingdoc",
+                        "metadata"
+                      ],
                       "properties": {
                         "id": {
                           "type": "string",

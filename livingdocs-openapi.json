@@ -132,6 +132,7 @@
         "tags": [
           "Project"
         ],
+        "operationId": "getProjectionConfiguration",
         "summary": "Get Project Configuration",
         "description": "Your AccessToken is valid for a single project. This endpoint tells you the details and configuration of this project.",
         "responses": {
@@ -153,6 +154,7 @@
         "tags": [
           "Project"
         ],
+        "operationId": "getAllChannels",
         "summary": "Get Default Channel Configuration",
         "responses": {
           "200": {
@@ -173,6 +175,7 @@
         "tags": [
           "Project"
         ],
+        "operationId": "getChannelConfigurationByChannelHandle",
         "summary": "Get Channel Configuration",
         "parameters": [
           {
@@ -203,6 +206,7 @@
         "tags": [
           "Project"
         ],
+        "operationId": "getCurrentDesign",
         "summary": "Get Current Design",
         "responses": {
           "200": {
@@ -223,6 +227,7 @@
         "tags": [
           "Project"
         ],
+        "operationId": "getDesignByVersion",
         "summary": "Get Specific Design",
         "parameters": [
           {
@@ -254,6 +259,7 @@
         "tags": [
           "Search"
         ],
+        "operationId": "searchPublications",
         "summary": "Search Publications",
         "parameters": [
           {
@@ -350,6 +356,7 @@
         "tags": [
           "Document Lists"
         ],
+        "operationId": "getDocumentListById",
         "summary": "Get List by Id",
         "parameters": [
           {
@@ -410,6 +417,7 @@
         "tags": [
           "Document Lists"
         ],
+        "operationId": "getAndFilterDocumentLists",
         "summary": "Get Lists",
         "parameters": [
           {
@@ -460,6 +468,7 @@
         "tags": [
           "Document Categories"
         ],
+        "operationId": "getCategoryById",
         "summary": "Get a Category with all Information",
         "description": "You need to activate the Categories / Routing Feature in the Project Config in order to query categories.",
         "parameters": [
@@ -501,6 +510,7 @@
         "tags": [
           "Document Categories"
         ],
+        "operationId": "getAllCategories",
         "summary": "Get Categories for a Project",
         "description": "You need to activate the Categories / Routing Feature in the Project Config in order to query categories.",
         "responses": {
@@ -522,6 +532,7 @@
         "tags": [
           "Media Library"
         ],
+        "operationId": "getMediaLibraryEntryById",
         "summary": "Get a Single Media Library Entry",
         "description": "Fetch a Media Library Entries by its `id`",
         "parameters": [
@@ -576,6 +587,7 @@
         "tags": [
           "Media Library"
         ],
+        "operationId": "updateMediaLibraryEntry",
         "summary": "Patch a Single Media Library Entry",
         "description": "Patch a Media Library Entries by its `id`",
         "parameters": [
@@ -661,6 +673,7 @@
         "tags": [
           "Media Library"
         ],
+        "operationId": "getMediaLibraryEntries",
         "summary": "Get Media Library Entries",
         "description": "Fetch multiple Media Library Entries by their `id` or `externalId`",
         "parameters": [
@@ -764,6 +777,7 @@
         "tags": [
           "Media Library"
         ],
+        "operationId": "getIncomingDocumentReferencesForMediaLibraryEntry",
         "summary": "Get Incoming Publication References for a Media Library Entry",
         "description": "Added in: release-2022-03",
         "parameters": [
@@ -857,6 +871,7 @@
         "tags": [
           "Media Library"
         ],
+        "operationId": "getIncomingMediaReferencesForMediaLibraryEntry",
         "summary": "Get Incoming Media References for a Media Library Entry",
         "description": "Added in: release-2022-03",
         "parameters": [
@@ -923,6 +938,7 @@
         "tags": [
           "Routing"
         ],
+        "operationId": "resolveDocumentPath",
         "summary": "Resolve a Path to a Document",
         "description": "You need to activate the Categories / Routing Feature in the Project Config in order to resolve paths to your documents. Routing is a quite advanced topic and the examples only work with a default configuration. Find more [here](https://docs.livingdocs.io/guides/organisation/routing-system/).",
         "parameters": [
@@ -995,6 +1011,7 @@
         "tags": [
           "Menus"
         ],
+        "operationId": "getChannelMenus",
         "summary": "Get Menus for a Channel",
         "description": "Menu items can be of three `type`s:\n- uri for arbitrary URIs, mainly used for URLs\n- path for internal paths, such as when the menu item should link to an article or page\n- document is the same as path except it is used when routing is disabled",
         "parameters": [
@@ -1081,6 +1098,7 @@
         "tags": [
           "Add Delivery Status"
         ],
+        "operationId": "addDeliveryStatusToDocument",
         "summary": "Add Delivery Status",
         "description": "This endpoint allows to provide updates for a document/publication regarding its status in an external delivery system (e.g. page build status in a static site generator). The response is a JSON object including the `reportId`.",
         "parameters": [
@@ -1159,6 +1177,7 @@
         "tags": [
           "Publications"
         ],
+        "operationId": "getLatestPublications",
         "summary": "Latest Publications",
         "description": "This endpoint is the list equivalent of the previous one. The response is an array of objects with 3 possible top-level properties: systemdata, metadata, content",
         "parameters": [
@@ -1457,6 +1476,7 @@
         "tags": [
           "Publications"
         ],
+        "operationId": "getLatestPublicationsBeta",
         "summary": "Latest Publications Beta",
         "description": "This endpoint is the list equivalent of the previous one. The response is an array of objects with 4 possible top-level properties: systemdata, metadata, content, references",
         "parameters": [
@@ -1774,6 +1794,7 @@
         "tags": [
           "Publications"
         ],
+        "operationId": "getLatestPublicationForDocument",
         "summary": "Latest Publication",
         "description": "Required scope: public-api:read. The response is a JSON object with 4 possible top-level properties: systemdata, metadata, content, renditions",
         "parameters": [
@@ -1810,142 +1831,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "systemdata": {
-                      "$ref": "#/components/schemas/Systemdata"
-                    },
-                    "metadata": {
-                      "$ref": "#/components/schemas/Metadata"
-                    },
-                    "content": {
-                      "$ref": "#/components/schemas/Content"
-                    },
-                    "renditions": {
-                      "$ref": "#/components/schemas/Renditions"
-                    }
-                  },
-                  "example": {
-                    "systemdata": {
-                      "projectId": 1,
-                      "channelId": 1,
-                      "documentId": 1,
-                      "contentType": "regular",
-                      "documentType": "article",
-                      "publicationId": 1,
-                      "firstPublicationDate": "2022-03-16T14:08:11:000Z",
-                      "significantPublicationDate": "2022-10-26T07:25:00.000Z",
-                      "visiblePublicationDate": "2022-10-27T06:00:00.000Z",
-                      "updatedAt": "2023-03-18T16:32:04.170Z",
-                      "layout": "regular",
-                      "design": {
-                        "name": "timeline",
-                        "version": "1.1.0"
-                      }
-                    },
-                    "metadata": {
-                      "title": "a title",
-                      "description": "some lead",
-                      "dependencies": {}
-                    },
-                    "content": [
-                      {
-                        "id": "doc-1b8i1ksh10",
-                        "identifier": "timeline.head",
-                        "component": "head",
-                        "content": {
-                          "title": "a title",
-                          "text": "some lead"
-                        }
-                      },
-                      {
-                        "id": "doc-1b8i1ksh20",
-                        "identifier": "timeline.normal",
-                        "component": "normal",
-                        "content": {
-                          "caption": "my caption"
-                        },
-                        "styles": {
-                          "position": "left"
-                        }
-                      },
-                      {
-                        "id": "doc-1b8i1ksh30",
-                        "identifier": "timeline.p",
-                        "component": "p",
-                        "content": {
-                          "text": "first paragraph"
-                        }
-                      },
-                      {
-                        "id": "doc-1b8i1me1d0",
-                        "identifier": "timeline.p",
-                        "component": "p",
-                        "content": {
-                          "text": "second paragraph"
-                        }
-                      }
-                    ],
-                    "renditions": [
-                      {
-                        "handle": "web",
-                        "content": "<div class=\"head\">\n  <h1>a title</h1>\n  <p class=\"lead\">some lead</p>\n</div>\n<figure class=\"aspect-ratio left\">\n  <img class=\"doc-image-empty\" src=\"data:image/svg+xml;charset=UTF-8,…\">\n  <figcaption>my caption</figcaption>\n</figure>\n<p>first paragraph</p>\n<p>second</p>\n<p> and third one. :)</p>"
-                      },
-                      {
-                        "handle": "mobile",
-                        "content": {
-                          "content": [
-                            {
-                              "id": "doc-1b8i1ksh10",
-                              "identifier": "timeline.head",
-                              "component": "head",
-                              "content": {
-                                "title": "a title",
-                                "text": "some lead"
-                              }
-                            },
-                            {
-                              "id": "doc-1b8i1ksh20",
-                              "identifier": "timeline.normal",
-                              "component": "normal",
-                              "content": {
-                                "caption": "my caption"
-                              },
-                              "styles": {
-                                "position": "left"
-                              }
-                            },
-                            {
-                              "id": "doc-1b8i1ksh30",
-                              "identifier": "timeline.p",
-                              "component": "p",
-                              "content": {
-                                "text": "first paragraph"
-                              }
-                            },
-                            {
-                              "id": "doc-1b8i1me1d0",
-                              "identifier": "timeline.p",
-                              "component": "p",
-                              "content": {
-                                "text": "second paragraph"
-                              }
-                            }
-                          ],
-                          "design": {
-                            "name": "timeline",
-                            "version": "1.1.0"
-                          }
-                        }
-                      },
-                      {
-                        "handle": "app",
-                        "error": {
-                          "message": "Processing of Channel 'app' for document '1' failed. Detailed error message…"
-                        }
-                      }
-                    ]
-                  }
+                  "$ref": "#/components/schemas/LatestPublicationForDocumentResponse"
                 }
               }
             }
@@ -1965,6 +1851,7 @@
         "tags": [
           "Publications"
         ],
+        "operationId": "getLatestPublicationForDocumentBeta",
         "summary": "Latest Publication Beta",
         "description": "The response is a JSON object with 5 possible top-level properties: systemdata, metadata, content, renditions, references",
         "parameters": [
@@ -2167,6 +2054,7 @@
         "tags": [
           "Publications"
         ],
+        "operationId": "getPublicationEvents",
         "summary": "Publication Events",
         "description": "Get Publication Events for the default channel",
         "parameters": [
@@ -2343,6 +2231,7 @@
         "tags": [
           "Publications"
         ],
+        "operationId": "getPublicationEventsForChannel",
         "summary": "Publication Events by Channel",
         "description": "Get Publication Events",
         "parameters": [
@@ -2528,6 +2417,7 @@
         "tags": [
           "Publications"
         ],
+        "operationId": "getIncomingDocumentReferencesForDocument",
         "summary": "Incoming Publication References",
         "description": "Get Incoming Publication References for a Document",
         "parameters": [
@@ -2619,6 +2509,7 @@
         "tags": [
           "Publications"
         ],
+        "operationId": "getIncomingMediaReferencesForDocument",
         "summary": "Incoming Media References",
         "description": "Get Incoming Media References for a Document. Added in: [release-2022-03](https://docs.livingdocs.io/operations/releases/release-2022-03/release-2022-03/)",
         "parameters": [
@@ -2691,6 +2582,7 @@
         "tags": [
           "Publications"
         ],
+        "operationId": "getDocumentRendition",
         "summary": "Get Specific Renditions for a Publication",
         "description": "**Upcoming Deprecation**\n\nPlease note that we’re working on offering a better alternative to the renditions with the `Composition API`.\n\nIf you need the HTML for a document you can use the `Composition API` and pass the field `html`.\n\n**Required Server Configuration**\n\nRenditions are only available if configured in the contentType configuration.",
         "parameters": [
@@ -2800,6 +2692,7 @@
         "tags": [
           "Publications"
         ],
+        "operationId": "getLatestDraftForDocument",
         "summary": "Get Latest Draft",
         "description": "**Added in:** [release-2022-03](https://docs.livingdocs.io/operations/releases/release-2022-03/release-2022-03/)\n\n**Required scope:** `public-api:write` `public-api:drafts:read`\n\nThis endpoint returns the most recent draft version of a document. A token with permission The response is a JSON object with 5 possible top-level properties: \n- systemdata \n- metadata \n- content \n- references \n- renditions (if rendition handles are specified)",
         "parameters": [
@@ -2912,6 +2805,7 @@
         "tags": [
           "Imports"
         ],
+        "operationId": "getImportDocuments",
         "summary": "Import Documents",
         "description": "The document import does both create and update documents. The import remembers the `externalId` / `systemName` pair and if an import matches an existing pair, it will update (Hint: consider how to rebuild the `externalId` when you want to update documents). The document import in Livingdocs is asynchronous. You post a batch of documents that you want to import and get back an id with which you can query later to get your result.",
         "requestBody": {
@@ -3102,6 +2996,7 @@
         "tags": [
           "Imports"
         ],
+        "operationId": "getDocumentImportStatus",
         "summary": "Check Import Status for Documents",
         "description": "You can use this endpoint to check for the status and/or result of a document import.",
         "parameters": [
@@ -3165,6 +3060,7 @@
         "tags": [
           "Imports"
         ],
+        "operationId": "importImage",
         "summary": "Import Images",
         "description": "The image import does both create and update images. The import remembers the `externalId` / `systemName` pair and if an import matches an existing pair, it will update (Hint: consider how to rebuild the `externalId` when you want to update images). The image import in Livingdocs is asynchronous. You post a batch of images that you want to import and get back an id with which you can query later to get your result.",
         "requestBody": {
@@ -3306,6 +3202,7 @@
         "tags": [
           "Imports"
         ],
+        "operationId": "getImageImportStatus",
         "summary": "Check Import Status for Images",
         "description": "You can use this endpoint to check for the status and/or result of a image import.",
         "parameters": [
@@ -3387,6 +3284,7 @@
         "tags": [
           "Imports"
         ],
+        "operationId": "importVideos",
         "summary": "Import Videos",
         "description": "The video import does both create and update videos. The import remembers the `externalId` / `systemName` pair and if an import matches an existing pair, it will update (Hint: consider how to rebuild the `externalId` when you want to update videos). The video import in Livingdocs is asynchronous. You post a batch of videos that you want to import and get back an id with which you can query later to get your result.",
         "requestBody": {
@@ -3518,6 +3416,7 @@
         "tags": [
           "Imports"
         ],
+        "operationId": "importMediaLibraryEntries",
         "summary": "Import Media Library Entries",
         "description": "When you can upload images to the configured Media Library storage (e.g. AWS S3) yourself it is possible to create Media Library Entries through the API.\n\nThis has the advantage that the entris will be included in the response directly in contrast to the importImages endpoint where you only get a job id.\n\nYou can also provide a custom id to entries which helps with importing documents where images in the document should be referenced with the correct `mediaId` maybe even before creating the Media Library Entries themselves.",
         "requestBody": {
@@ -3872,6 +3771,7 @@
         "tags": [
           "Sitemaps"
         ],
+        "operationId": "getSitemapIndex",
         "summary": "Get a Sitemap's Index",
         "description": "",
         "parameters": [
@@ -3932,6 +3832,7 @@
         "tags": [
           "Sitemaps"
         ],
+        "operationId": "getSitemapEntries",
         "summary": "Get a Sitemap's Entries",
         "description": "",
         "parameters": [
@@ -3995,6 +3896,7 @@
         "tags": [
           "Health"
         ],
+        "operationId": "getApiStatus",
         "summary": "Check API Status",
         "description": "",
         "responses": {
@@ -4014,8 +3916,9 @@
           }
         ],
         "tags": [
-          "Composition API"
+          "Composition"
         ],
+        "operationId": "composePublication",
         "summary": "Compose a publication",
         "description": "The goal of the composition endpoint is to gather all required information to render a document in one endpoint and to work for different rendering strategies (e.g. render from JSON or use the prerendered Html). The composition Api supports rendering Html without any configuration, can preload references in metadata and can return resolved includes as JSON. It offers optimised performance for all those tasks and will replace the RenderPipeline feature. We plan to add additional functionalities like automatic design updates of documents and more to the composition Api in upcoming releases and are open for inputs what we could add.",
         "parameters": [
@@ -4032,67 +3935,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "example": {
-                  "fields": [
-                    "systemdata",
-                    "metadata",
-                    "content",
-                    "html",
-                    "includes",
-                    "design"
-                  ],
-                  "metadata": {
-                    "preload": {
-                      "myMetadataProp": true
-                    }
-                  },
-                  "resolveIncludes": true,
-                  "renderOptions": {
-                    "renderDirectiveInfo": true,
-                    "decodeHtml": true
-                  }
-                },
-                "properties": {
-                  "fields": {
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "enum": [
-                        "systemdata",
-                        "metadata",
-                        "content",
-                        "html",
-                        "includes",
-                        "design"
-                      ]
-                    }
-                  },
-                  "metadata": {
-                    "type": "object",
-                    "additionalProperties": false,
-                    "properties": {
-                      "preload": {
-                        "type": "object"
-                      }
-                    }
-                  },
-                  "resolveIncludes": {
-                    "type": "boolean"
-                  },
-                  "renderOptions": {
-                    "type": "object",
-                    "additionalProperties": false,
-                    "properties": {
-                      "renderDirectiveInfo": {
-                        "type": "boolean"
-                      },
-                      "decodeHtml": {
-                        "type": "boolean"
-                      }
-                    }
-                  }
-                }
+                "$ref": "#/components/schemas/CompositionApiRequestBody"
               }
             }
           }
@@ -4103,154 +3946,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "systemdata": {
-                      "$ref": "#/components/schemas/Systemdata"
-                    },
-                    "metadata": {
-                      "$ref": "#/components/schemas/Metadata"
-                    },
-                    "content": {
-                      "$ref": "#/components/schemas/Content"
-                    },
-                    "includes": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "componentId": {
-                            "type": "string"
-                          },
-                          "directiveName": {
-                            "type": "string"
-                          },
-                          "resolvedValue": {
-                            "type": "object",
-                            "properties": {
-                              "content": {
-                                "type": "array",
-                                "items": {
-                                  "type": "object",
-                                  "properties": {
-                                    "id": {
-                                      "type": "string"
-                                    },
-                                    "component": {
-                                      "type": "string"
-                                    },
-                                    "content": {
-                                      "type": "object"
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "html": {
-                      "type": "string"
-                    }
-                  },
-                  "example": {
-                    "systemdata": {
-                      "projectId": 1,
-                      "channelId": 1,
-                      "documentId": 1,
-                      "contentType": "article",
-                      "documentType": "article",
-                      "publicationId": 1,
-                      "firstPublicationDate": "2022-03-16T14:08:11:000Z",
-                      "significantPublicationDate": "2022-10-26T07:25:00.000Z",
-                      "visiblePublicationDate": "2022-10-27T06:00:00.000Z",
-                      "updatedAt": "2023-03-18T16:32:04.170Z",
-                      "design": {
-                        "name": "timeline",
-                        "version": "1.1.0"
-                      }
-                    },
-                    "content": [
-                      {
-                        "id": "doc-1b8i1ksh10",
-                        "identifier": "timeline.head",
-                        "component": "head",
-                        "content": {
-                          "title": "a title",
-                          "text": "some lead"
-                        }
-                      },
-                      {
-                        "id": "doc-2c95a77x14",
-                        "identifier": "timeline.teaser",
-                        "component": "teaser",
-                        "content": {
-                          "embed-teaser": {
-                            "service": "embed-teaser",
-                            "params": {
-                              "document": {
-                                "'$ref'": "document",
-                                "reference": {
-                                  "id": 7
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    ],
-                    "metadata": {
-                      "title": "a title",
-                      "description": "some lead",
-                      "topic": {
-                        "'$ref'": "document",
-                        "reference": {
-                          "id": "5"
-                        },
-                        "isPreloaded": true,
-                        "value": {
-                          "metadata": {
-                            "title": "Another title"
-                          },
-                          "systemdata": {
-                            "projectId": 1,
-                            "channelId": 1,
-                            "documentId": 5,
-                            "contentType": "article",
-                            "documentType": "article",
-                            "publicationId": 7,
-                            "firstPublicationDate": "2022-03-16T14:08:11:000Z",
-                            "significantPublicationDate": "2022-10-26T07:25:00.000Z",
-                            "visiblePublicationDate": "2022-10-27T06:00:00.000Z",
-                            "updatedAt": "2023-03-18T17:32:04.170Z",
-                            "design": {
-                              "name": "timeline",
-                              "version": "1.1.0"
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "includes": [
-                      {
-                        "componentId": "doc-2c95a77x14",
-                        "directiveName": "embed-teaser",
-                        "resolvedValue": {
-                          "content": [
-                            {
-                              "id": "ref-7",
-                              "component": "p",
-                              "content": {
-                                "text": "Some text."
-                              }
-                            }
-                          ]
-                        }
-                      }
-                    ],
-                    "html": "<div>...</div>"
-                  }
+                  "$ref": "#/components/schemas/CompositionApiResponse"
                 }
               }
             }
@@ -4497,6 +4193,357 @@
           "message": {
             "type": "string"
           }
+        }
+      },
+      "LatestPublicationForDocumentResponse": {
+        "type": "object",
+        "properties": {
+          "systemdata": {
+            "$ref": "#/components/schemas/Systemdata"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/Metadata"
+          },
+          "content": {
+            "$ref": "#/components/schemas/Content"
+          },
+          "renditions": {
+            "$ref": "#/components/schemas/Renditions"
+          }
+        },
+        "example": {
+          "systemdata": {
+            "projectId": 1,
+            "channelId": 1,
+            "documentId": 1,
+            "contentType": "regular",
+            "documentType": "article",
+            "publicationId": 1,
+            "firstPublicationDate": "2022-03-16T14:08:11:000Z",
+            "significantPublicationDate": "2022-10-26T07:25:00.000Z",
+            "visiblePublicationDate": "2022-10-27T06:00:00.000Z",
+            "updatedAt": "2023-03-18T16:32:04.170Z",
+            "layout": "regular",
+            "design": {
+              "name": "timeline",
+              "version": "1.1.0"
+            }
+          },
+          "metadata": {
+            "title": "a title",
+            "description": "some lead",
+            "dependencies": {}
+          },
+          "content": [
+            {
+              "id": "doc-1b8i1ksh10",
+              "identifier": "timeline.head",
+              "component": "head",
+              "content": {
+                "title": "a title",
+                "text": "some lead"
+              }
+            },
+            {
+              "id": "doc-1b8i1ksh20",
+              "identifier": "timeline.normal",
+              "component": "normal",
+              "content": {
+                "caption": "my caption"
+              },
+              "styles": {
+                "position": "left"
+              }
+            },
+            {
+              "id": "doc-1b8i1ksh30",
+              "identifier": "timeline.p",
+              "component": "p",
+              "content": {
+                "text": "first paragraph"
+              }
+            },
+            {
+              "id": "doc-1b8i1me1d0",
+              "identifier": "timeline.p",
+              "component": "p",
+              "content": {
+                "text": "second paragraph"
+              }
+            }
+          ],
+          "renditions": [
+            {
+              "handle": "web",
+              "content": "<div class=\"head\">\n  <h1>a title</h1>\n  <p class=\"lead\">some lead</p>\n</div>\n<figure class=\"aspect-ratio left\">\n  <img class=\"doc-image-empty\" src=\"data:image/svg+xml;charset=UTF-8,…\">\n  <figcaption>my caption</figcaption>\n</figure>\n<p>first paragraph</p>\n<p>second</p>\n<p> and third one. :)</p>"
+            },
+            {
+              "handle": "mobile",
+              "content": {
+                "content": [
+                  {
+                    "id": "doc-1b8i1ksh10",
+                    "identifier": "timeline.head",
+                    "component": "head",
+                    "content": {
+                      "title": "a title",
+                      "text": "some lead"
+                    }
+                  },
+                  {
+                    "id": "doc-1b8i1ksh20",
+                    "identifier": "timeline.normal",
+                    "component": "normal",
+                    "content": {
+                      "caption": "my caption"
+                    },
+                    "styles": {
+                      "position": "left"
+                    }
+                  },
+                  {
+                    "id": "doc-1b8i1ksh30",
+                    "identifier": "timeline.p",
+                    "component": "p",
+                    "content": {
+                      "text": "first paragraph"
+                    }
+                  },
+                  {
+                    "id": "doc-1b8i1me1d0",
+                    "identifier": "timeline.p",
+                    "component": "p",
+                    "content": {
+                      "text": "second paragraph"
+                    }
+                  }
+                ],
+                "design": {
+                  "name": "timeline",
+                  "version": "1.1.0"
+                }
+              }
+            },
+            {
+              "handle": "app",
+              "error": {
+                "message": "Processing of Channel 'app' for document '1' failed. Detailed error message…"
+              }
+            }
+          ]
+        }
+      },
+      "CompositionApiRequestBody": {
+        "type": "object",
+        "example": {
+          "fields": [
+            "systemdata",
+            "metadata",
+            "content",
+            "html",
+            "includes",
+            "design"
+          ],
+          "metadata": {
+            "preload": {
+              "myMetadataProp": true
+            }
+          },
+          "resolveIncludes": true,
+          "renderOptions": {
+            "renderDirectiveInfo": true,
+            "decodeHtml": true
+          }
+        },
+        "properties": {
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "systemdata",
+                "metadata",
+                "content",
+                "html",
+                "includes",
+                "design"
+              ]
+            }
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "preload": {
+                "type": "object"
+              }
+            }
+          },
+          "resolveIncludes": {
+            "type": "boolean"
+          },
+          "renderOptions": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "renderDirectiveInfo": {
+                "type": "boolean"
+              },
+              "decodeHtml": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "CompositionApiResponse": {
+        "type": "object",
+        "properties": {
+          "systemdata": {
+            "$ref": "#/components/schemas/Systemdata"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/Metadata"
+          },
+          "content": {
+            "$ref": "#/components/schemas/Content"
+          },
+          "includes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "componentId": {
+                  "type": "string"
+                },
+                "directiveName": {
+                  "type": "string"
+                },
+                "resolvedValue": {
+                  "type": "object",
+                  "properties": {
+                    "content": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "component": {
+                            "type": "string"
+                          },
+                          "content": {
+                            "type": "object"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "html": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "systemdata": {
+            "projectId": 1,
+            "channelId": 1,
+            "documentId": 1,
+            "contentType": "article",
+            "documentType": "article",
+            "publicationId": 1,
+            "firstPublicationDate": "2022-03-16T14:08:11:000Z",
+            "significantPublicationDate": "2022-10-26T07:25:00.000Z",
+            "visiblePublicationDate": "2022-10-27T06:00:00.000Z",
+            "updatedAt": "2023-03-18T16:32:04.170Z",
+            "design": {
+              "name": "timeline",
+              "version": "1.1.0"
+            }
+          },
+          "content": [
+            {
+              "id": "doc-1b8i1ksh10",
+              "identifier": "timeline.head",
+              "component": "head",
+              "content": {
+                "title": "a title",
+                "text": "some lead"
+              }
+            },
+            {
+              "id": "doc-2c95a77x14",
+              "identifier": "timeline.teaser",
+              "component": "teaser",
+              "content": {
+                "embed-teaser": {
+                  "service": "embed-teaser",
+                  "params": {
+                    "document": {
+                      "'$ref'": "document",
+                      "reference": {
+                        "id": 7
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "metadata": {
+            "title": "a title",
+            "description": "some lead",
+            "topic": {
+              "'$ref'": "document",
+              "reference": {
+                "id": "5"
+              },
+              "isPreloaded": true,
+              "value": {
+                "metadata": {
+                  "title": "Another title"
+                },
+                "systemdata": {
+                  "projectId": 1,
+                  "channelId": 1,
+                  "documentId": 5,
+                  "contentType": "article",
+                  "documentType": "article",
+                  "publicationId": 7,
+                  "firstPublicationDate": "2022-03-16T14:08:11:000Z",
+                  "significantPublicationDate": "2022-10-26T07:25:00.000Z",
+                  "visiblePublicationDate": "2022-10-27T06:00:00.000Z",
+                  "updatedAt": "2023-03-18T17:32:04.170Z",
+                  "design": {
+                    "name": "timeline",
+                    "version": "1.1.0"
+                  }
+                }
+              }
+            }
+          },
+          "includes": [
+            {
+              "componentId": "doc-2c95a77x14",
+              "directiveName": "embed-teaser",
+              "resolvedValue": {
+                "content": [
+                  {
+                    "id": "ref-7",
+                    "component": "p",
+                    "content": {
+                      "text": "Some text."
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "html": "<div>...</div>"
         }
       }
     }

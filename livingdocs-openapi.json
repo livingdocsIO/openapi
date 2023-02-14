@@ -1340,7 +1340,7 @@
                         "contentType": "article",
                         "documentType": "article",
                         "publicationId": 1,
-                        "firstPublicationDate": "2022-03-16T14:08:11:000Z",
+                        "firstPublicationDate": "2022-03-16T14:08:11.000Z",
                         "significantPublicationDate": "2022-10-26T07:25:00.000Z",
                         "visiblePublicationDate": "2022-10-27T06:00:00.000Z",
                         "updatedAt": "2022-10-30T16:32:04.170Z",
@@ -1402,7 +1402,7 @@
                         "contentType": "article",
                         "documentType": "article",
                         "publicationId": 5,
-                        "firstPublicationDate": "2022-03-16T14:08:11:000Z",
+                        "firstPublicationDate": "2022-03-16T14:08:11.000Z",
                         "significantPublicationDate": "2022-10-26T07:25:00.000Z",
                         "visiblePublicationDate": "2022-10-27T06:00:00.000Z",
                         "updatedAt": "2022-10-30T16:32:04.170Z",
@@ -1642,7 +1642,7 @@
                         "contentType": "article",
                         "documentType": "article",
                         "publicationId": 1,
-                        "firstPublicationDate": "2022-03-16T14:08:11:000Z",
+                        "firstPublicationDate": "2022-03-16T14:08:11.000Z",
                         "significantPublicationDate": "2022-10-26T07:25:00.000Z",
                         "visiblePublicationDate": "2022-10-27T06:00:00.000Z",
                         "updatedAt": "2022-10-30T16:32:04.170Z",
@@ -1712,7 +1712,7 @@
                         "contentType": "article",
                         "documentType": "article",
                         "publicationId": 5,
-                        "firstPublicationDate": "2022-03-16T14:08:11:000Z",
+                        "firstPublicationDate": "2022-03-16T14:08:11.000Z",
                         "significantPublicationDate": "2022-10-26T07:25:00.000Z",
                         "visiblePublicationDate": "2022-10-27T06:00:00.000Z",
                         "updatedAt": "2022-10-30T16:32:04.170Z",
@@ -1914,7 +1914,7 @@
                       "contentType": "article",
                       "documentType": "article",
                       "publicationId": 1,
-                      "firstPublicationDate": "2022-03-16T14:08:11:000Z",
+                      "firstPublicationDate": "2022-03-16T14:08:11.000Z",
                       "significantPublicationDate": "2022-10-26T07:25:00.000Z",
                       "visiblePublicationDate": "2022-10-27T06:00:00.000Z",
                       "updatedAt": "2023-03-18T16:32:04.170Z",
@@ -4065,8 +4065,15 @@
               "type": "string"
             },
             "content": {
-              "type": "string",
-              "format": "html"
+              "oneOf": [
+                {
+                  "type": "string",
+                  "format": "html"
+                },
+                {
+                  "type": "object"
+                }
+              ]
             }
           }
         }
@@ -4219,7 +4226,7 @@
             "contentType": "regular",
             "documentType": "article",
             "publicationId": 1,
-            "firstPublicationDate": "2022-03-16T14:08:11:000Z",
+            "firstPublicationDate": "2022-03-16T14:08:11.000Z",
             "significantPublicationDate": "2022-10-26T07:25:00.000Z",
             "visiblePublicationDate": "2022-10-27T06:00:00.000Z",
             "updatedAt": "2023-03-18T16:32:04.170Z",
@@ -4456,7 +4463,7 @@
             "contentType": "article",
             "documentType": "article",
             "publicationId": 1,
-            "firstPublicationDate": "2022-03-16T14:08:11:000Z",
+            "firstPublicationDate": "2022-03-16T14:08:11.000Z",
             "significantPublicationDate": "2022-10-26T07:25:00.000Z",
             "visiblePublicationDate": "2022-10-27T06:00:00.000Z",
             "updatedAt": "2023-03-18T16:32:04.170Z",
@@ -4514,7 +4521,7 @@
                   "contentType": "article",
                   "documentType": "article",
                   "publicationId": 7,
-                  "firstPublicationDate": "2022-03-16T14:08:11:000Z",
+                  "firstPublicationDate": "2022-03-16T14:08:11.000Z",
                   "significantPublicationDate": "2022-10-26T07:25:00.000Z",
                   "visiblePublicationDate": "2022-10-27T06:00:00.000Z",
                   "updatedAt": "2023-03-18T17:32:04.170Z",

@@ -117,6 +117,14 @@
         "description": "Docs",
         "url": "docs.livingdocs.io/reference-docs/public-api/status/"
       }
+    },
+    {
+      "name": "Retresco",
+      "description": "Retresco Webhook",
+      "externalDocs": {
+        "description": "Docs",
+        "url": "docs.livingdocs.io/guides/integrations/retresco/"
+      }
     }
   ],
   "paths": {
@@ -3916,9 +3924,9 @@
           }
         ],
         "tags": [
-          "Retresco re-enrich"
+          "Retresco"
         ],
-        "summary": "Retresco hook",
+        "summary": "Retresco re-enrich Webhook",
         "description": "This hook should be used on Retresco when enabling the re-enrich feature to trigger asynchronous document enrichment.",
         "requestBody": {
           "content": {

@@ -344,6 +344,24 @@
             }
           },
           {
+            "name": "filters",
+            "description": "A JSON string which follows the search filters query DSL.",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "[{\"key\":\"metadata.title\",\"term\":\"My Title\"}]"
+            }
+          },
+          {
+            "name": "sort",
+            "description": "Comma separated list of sort properties. Any of the filter fields can be used, and also sortDate, which can be defined using the publication index config, or will be the Visible Publication Date. Most metadata properties can be used to sort, but not those indexed as 'text' or 'boolean'. The sort order can be reversed by prefixing the property with a `-`. Documents which don't have an indexed value will appear at the end of the results.",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "sortDate,-documentId"
+            }
+          },
+          {
             "name": "fields",
             "description": "Filters which (comma separated) properties are included in the response. Defaults to `systemdata,metadata,content` (no renditions). Use `id` if you only want to retrieve the ids of the published documents. Useful (and faster) if you are fully synchronizing your frontend with the publication events.",
             "in": "query",

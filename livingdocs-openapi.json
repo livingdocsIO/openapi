@@ -358,8 +358,8 @@
             "in": "query",
             "schema": {
               "type": "integer",
-              "minLength": 0,
-              "maxLength": 100,
+              "minimum": 0,
+              "maximum": 100,
               "example": 10
             }
           },
@@ -429,8 +429,8 @@
             "in": "query",
             "schema": {
               "type": "integer",
-              "minLength": 0,
-              "maxLength": 100,
+              "minimum": 0,
+              "maximum": 100,
               "example": 100
             }
           }
@@ -472,8 +472,8 @@
             "in": "query",
             "schema": {
               "type": "integer",
-              "minLength": 0,
-              "maxLength": 100,
+              "minimum": 0,
+              "maximum": 100,
               "example": 10
             }
           },
@@ -1233,8 +1233,8 @@
             "description": "A limit for how much published documents to retrieve. Defaults to 100. Max. 100.",
             "schema": {
               "type": "integer",
-              "minLength": 0,
-              "maxLength": 100,
+              "minimum": 0,
+              "maximum": 100,
               "example": 100
             },
             "in": "query"
@@ -1532,8 +1532,8 @@
             "description": "A limit for how much published documents to retrieve. Defaults to 100. Max. 100.",
             "schema": {
               "type": "integer",
-              "minLength": 0,
-              "maxLength": 100,
+              "minimum": 0,
+              "maximum": 100,
               "example": 100
             },
             "in": "query"

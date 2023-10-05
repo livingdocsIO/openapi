@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "description": "This is to quickly test the Livingdocs Public API. First create a project on [Livingdocs](edit.livingdocs.io). Then create a API token for that project. Use the token to authorize your requests. You can find out more about Livingdocs [http://livingdocs.io](http://livingdocs.io). ",
-    "version": "release-2023-07",
+    "version": "release-2023-11",
     "title": "Livingdocs Demo",
     "termsOfService": "http://livingdocs.io/terms/",
     "contact": {

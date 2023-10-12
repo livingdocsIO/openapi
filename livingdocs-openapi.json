@@ -47,14 +47,6 @@
       }
     },
     {
-      "name": "Search",
-      "description": "Search",
-      "externalDocs": {
-        "description": "Docs",
-        "url": "https://docs.livingdocs.io/reference/public-api/search/"
-      }
-    },
-    {
       "name": "Document Lists",
       "description": "",
       "externalDocs": {
@@ -300,7 +292,7 @@
           }
         ],
         "tags": [
-          "Search"
+          "Publications"
         ],
         "operationId": "searchPublications",
         "summary": "Search Publications",

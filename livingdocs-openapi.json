@@ -1430,12 +1430,12 @@
           }
         },
         "responses": {
-          "200": {
+          "204": {
             "description": "ok",
             "content": {
               "application/json": {
                 "example": {
-                  "status": 200
+                  "status": 204
                 }
               }
             }

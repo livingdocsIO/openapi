@@ -23,7 +23,7 @@
       }
     },
     {
-      "name": "Command API",
+      "name": "Document Command API",
       "description": "Execute commands on documents",
       "externalDocs": {
         "description": "Docs",
@@ -1359,7 +1359,7 @@
           }
         ],
         "tags": [
-          "Command API"
+          "Document Command API"
         ],
         "operationId": "executeDocumentCommands",
         "summary": "Execute Commands on Documents. Added in release-2023-11.",
